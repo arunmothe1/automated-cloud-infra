@@ -1,3 +1,4 @@
+
 data "aws_ami" "amazon_linux" {
   most_recent = true
 
@@ -5,27 +6,31 @@ data "aws_ami" "amazon_linux" {
 
   filter {
     name   = "name"
-    values = ["a12023-ami-*x86_64"]
+    values = ["al2023-ami-*-x86_64"]
   }
 
   filter {
     name   = "state"
     values = ["available"]
   }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
 }
 
-
-resource "aws_instance" "Jenkins" {
-  ami_id        = data.aws_ami.amazon_linux.id
+resource "aws_instance" "jenkins" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = var.instance_type
 
-  subnet_id                    = var.subnet_id
-  vpc_security_group_ids       = [var.vpc_security_group_ids]
-  associate_public_ip_addraess = true
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = [var.security_group_id]
+  associate_public_ip_address = true
 
   key_name = var.key_name
 
   tags = {
-    name = "${var.projet_name}-Jenkins"
+    Name = "${var.project_name}-jenkins"
   }
 }

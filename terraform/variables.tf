@@ -52,3 +52,13 @@ variable "private_db_subnet_cidrs" {
     error_message = "exactly 2 private db subnet cidrs are required. "
   }
 }
+
+variable "admin_ip" {
+  description = "adimn public ip for jenkins ssh"
+  type        = string
+}
+
+variable "key_name" {
+  description = "Exsting aws ec2 key pair name"
+  type        = string
+}

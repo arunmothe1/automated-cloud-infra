@@ -46,7 +46,7 @@ resource "aws_security_group" "Jenkins" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_block  = [var.admin_ip]
+    cidr_blocks = [var.admin_ip]
   }
 
   ingress {
@@ -62,7 +62,7 @@ resource "aws_security_group" "Jenkins" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_block  = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
@@ -81,7 +81,7 @@ resource "aws_security_group" "k8s" {
     from_port   = 6443
     to_port     = 6443
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_id]
+    cidr_blocks = [var.vpc_cidr]
   }
 
   ingress {
@@ -117,7 +117,7 @@ resource "aws_security_group" "k8s" {
 
 # RDS security group 
 
-resource "aws_security_group" "RDS" {
+resource "aws_security_group" "rds" {
   name        = "${var.project_name}-rds-sg"
   description = "security group for rds mysql"
   vpc_id      = var.vpc_id
@@ -142,3 +142,4 @@ resource "aws_security_group" "RDS" {
     name = "${var.project_name}-rds-sg"
   }
 }
+

@@ -1,25 +1,26 @@
+
 variable "project_name" {
-    descripetion = "project_name"
-    type = string
+  description = "Project name"
+  type        = string
 }
 
 variable "subnet_id" {
-    descripetion = "public subnet id for Jenkins"
-    type = string
+  description = "Public subnet ID for Jenkins"
+  type        = string
 }
 
 variable "security_group_id" {
-    descripetion = "Jenkins security group id"
-    type = string 
+  description = "Jenkins security group ID"
+  type        = string
 }
 
-variable = "instance_type" {
-    descripetion = "Jenkins ec2 instance type"
-    type = string 
-    default = "t3.micro"
+variable "instance_type" {
+  description = "Jenkins EC2 instance type"
+  type        = string
+  default     = "t3.micro"
 }
 
-variable = "key_name" {
-    descripetion = "ec2 instance key pair name"
-    type = string
+variable "key_name" {
+  description = "EC2 key pair name"
+  type        = string
 }

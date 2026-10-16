@@ -32,3 +32,16 @@ output "availability_zones" {
   description = "availability zones"
   value       = module.vpc.availability_zones
 }
+
+output "ecr_repository_url" {
+  value = module.ecr.ecr_repository_url
+}
+
+
+output "control_plane_private_ip" {
+  value = module.kubernetes.control_plane_private_ip
+}
+
+output "worker_private_ip" {
+  value = module.kubernetes.worker_private_ip
+}

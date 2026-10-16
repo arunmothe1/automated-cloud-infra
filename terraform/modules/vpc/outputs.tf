@@ -25,7 +25,7 @@ output "private_db_subnet_ids" {
 
 output "internet_gateway_id" {
   description = "internet gateway id"
-  value = aws_internet_gateway.igw.id
+  value       = aws_internet_gateway.igw.id
 }
 
 output "nat_gateway_ids" {
